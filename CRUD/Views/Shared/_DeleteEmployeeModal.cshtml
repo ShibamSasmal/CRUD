@@ -1,0 +1,27 @@
+﻿@model CRUD.Models.Employee
+
+<!-- Delete Employee Modal -->
+@if (Model != null)
+{
+    using (Html.BeginForm("DeleteEmployee", "Employee", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id)
+        <div class="modal-header">
+            <h4 class="modal-title">Delete Employee</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want to delete the employee record for <strong>@Model.Name</strong>?</p>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-danger" >Delete</button>
+        </div>
+    }
+}
+else
+{
+    <p>Error: Employee model is null.</p>
+}
